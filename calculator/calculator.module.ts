@@ -1,40 +1,48 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import * as math from "mathjs";
+// import { last } from "rxjs";
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule],
+	declarations: [],
+	imports: [CommonModule],
 })
 export class CalculatorModule {
-  private _textBoxValue = '';
-  private _equal: number = 0;
+	private _textBoxValue = "";
+	private _equal: number = 0;
+	private percentNumber: number = 0.01;
 
-  // get the value for text box
-  get textBoxValue(): string {
-    return this._textBoxValue;
-  }
+	// get the value for text box
+	get textBoxValue(): string {
+		return this._textBoxValue;
+	}
 
-  appendValueToTextBox(value: string): void {
-    this._textBoxValue += value;
-  }
+	appendValueToTextBox(value: string): void {
+		this._textBoxValue += value;
+	}
 
-  clearTextBox(): void {
-    this._textBoxValue = '';
-  }
+	clearTextBox(): void {
+		this._textBoxValue = "";
+	}
 
-  addNumbers(): number {
-    const numbers = this._textBoxValue.split('+');
+	computePercent(): void {
+		const split = this._textBoxValue.split(/[-+*/]/).filter(Boolean);
 
-    const sum: number = numbers.reduce((total, num) => {
-      const parsedNum = parseFloat(num);
-      return isNaN(parsedNum) ? total : total + parsedNum;
-    }, 0);
-    this._equal = sum;
-    return sum;
-  }
+		const lastNumber: string = split.length ? split[split.length - 1] : "0";
 
-  equalResult(): void {
-    const convertTotalToString: string = this._equal.toString();
-    this._textBoxValue = convertTotalToString;
-  }
+		const convertToNum = parseFloat(lastNumber);
+		this._equal = convertToNum * 0.01;
+		const convertTotalToString: string = this._equal.toString();
+		this._textBoxValue = convertTotalToString;
+	}
+
+	equalResult(): void {
+		const expression = this._textBoxValue.trim();
+
+		if (expression) {
+			this._equal = math.evaluate(expression);
+		}
+		const convertTotalToString: string = this._equal.toString();
+		this._textBoxValue = convertTotalToString;
+	}
 }

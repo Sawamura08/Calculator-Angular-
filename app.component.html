@@ -1,154 +1,94 @@
 <head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	/>
 </head>
 
 <h1>Calculator</h1>
 <main class="calculator-Container">
-  <input
-    type="text"
-    name=""
-    id=""
-    class="number-Container"
-    inputmode="numeric"
-    [value]="Calculator.textBoxValue"
-  />
-  <figure class="icons-Container">
-    <section class="icons">
-      <button class="upperButton" (click)="Calculator.clearTextBox()">
-        AC
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="upperButton"
-        (click)="Calculator.appendValueToTextBox('-')"
-      >
-        <i class="fa-solid fa-plus-minus"></i>
-      </button>
-    </section>
-    <section class="icons">
-      <button class="upperButton"><i class="fa-solid fa-percent"></i></button>
-    </section>
-    <section class="icons">
-      <button class="rightButton"><i class="fa-solid fa-divide"></i></button>
-    </section>
-    <section class="icons">
-      <button
-        class="centerButton"
-        (click)="Calculator.appendValueToTextBox('7')"
-      >
-        7
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="centerButton"
-        (click)="Calculator.appendValueToTextBox('8')"
-      >
-        8
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="centerButton"
-        (click)="Calculator.appendValueToTextBox('9')"
-      >
-        9
-      </button>
-    </section>
-    <section class="icons">
-      <button class="rightButton"><i class="fa-solid fa-xmark"></i></button>
-    </section>
-    <section class="icons">
-      <button
-        class="centerButton"
-        (click)="Calculator.appendValueToTextBox('4')"
-      >
-        4
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="centerButton"
-        (click)="Calculator.appendValueToTextBox('5')"
-      >
-        5
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="centerButton"
-        (click)="Calculator.appendValueToTextBox('6')"
-      >
-        6
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="rightButton"
-        (click)="Calculator.appendValueToTextBox('-')"
-      >
-        <i class="fa-solid fa-minus"></i>
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="centerButton"
-        (click)="Calculator.appendValueToTextBox('1')"
-      >
-        1
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="centerButton"
-        (click)="Calculator.appendValueToTextBox('2')"
-      >
-        2
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="centerButton"
-        (click)="Calculator.appendValueToTextBox('3')"
-      >
-        3
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="rightButton"
-        (click)="Calculator.appendValueToTextBox('+'); AddOnClick()"
-      >
-        <i class="fa-solid fa-plus"></i>
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="centerButton zero"
-        (click)="Calculator.appendValueToTextBox('0')"
-      >
-        0
-      </button>
-    </section>
-    <section class="icons">
-      <button
-        class="centerButton"
-        (click)="Calculator.appendValueToTextBox('.')"
-      >
-        .
-      </button>
-    </section>
-    <section class="icons">
-      <button class="centerButton" (click)="EqualOnClick()">
-        <i class="fa-solid fa-equals"></i>
-      </button>
-    </section>
-  </figure>
+	<input
+		type="text"
+		name=""
+		id=""
+		class="number-Container"
+		inputmode="numeric"
+		[value]="Calculator.textBoxValue"
+	/>
+	<figure class="icons-Container">
+		<section class="icons">
+			<button class="upperButton" (click)="Calculator.clearTextBox()">AC</button>
+		</section>
+		<section class="icons">
+			<button class="upperButton" (click)="Calculator.appendValueToTextBox('-')">
+				<i class="fa-solid fa-plus-minus"></i>
+			</button>
+		</section>
+		<section class="icons">
+			<button class="upperButton" (click)="percentOnClick()">
+				<i class="fa-solid fa-percent"></i>
+			</button>
+		</section>
+		<section class="icons">
+			<button class="rightButton" (click)="Calculator.appendValueToTextBox('/')">
+				<i class="fa-solid fa-divide"></i>
+			</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton" (click)="Calculator.appendValueToTextBox('7')">7</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton" (click)="Calculator.appendValueToTextBox('8')">8</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton" (click)="Calculator.appendValueToTextBox('9')">9</button>
+		</section>
+		<section class="icons">
+			<button class="rightButton" (click)="Calculator.appendValueToTextBox('*')">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton" (click)="Calculator.appendValueToTextBox('4')">4</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton" (click)="Calculator.appendValueToTextBox('5')">5</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton" (click)="Calculator.appendValueToTextBox('6')">6</button>
+		</section>
+		<section class="icons">
+			<button class="rightButton" (click)="Calculator.appendValueToTextBox('-')">
+				<i class="fa-solid fa-minus"></i>
+			</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton" (click)="Calculator.appendValueToTextBox('1')">1</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton" (click)="Calculator.appendValueToTextBox('2')">2</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton" (click)="Calculator.appendValueToTextBox('3')">3</button>
+		</section>
+		<section class="icons">
+			<button class="rightButton" (click)="Calculator.appendValueToTextBox('+')">
+				<i class="fa-solid fa-plus"></i>
+			</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton zero" (click)="Calculator.appendValueToTextBox('0')">0</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton" (click)="Calculator.appendValueToTextBox('.')">.</button>
+		</section>
+		<section class="icons">
+			<button class="centerButton" (click)="EqualOnClick()">
+				<i class="fa-solid fa-equals"></i>
+			</button>
+		</section>
+	</figure>
 </main>
