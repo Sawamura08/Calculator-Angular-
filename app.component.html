@@ -91,9 +91,12 @@
 					<i class="fa-solid fa-equals"></i>
 				</button>
 			</section>
+			<section class="icons">
+				<button class="centerButton" (click)="clearHistoryOnClick()">CH</button>
+			</section>
 		</figure>
 	</main>
-	<div class="historyContainer">
+	<div class="historyContainer" *ngIf="isAnimation" [@fade]="isAnimation ? 'visible' : 'hidden'">
 		<section class="history" *ngFor="let history of Calculator.historyArr">
 			<p>{{ history.historyOperation }} = {{ history.historyAnswer }}</p>
 		</section>

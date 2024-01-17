@@ -56,4 +56,8 @@ export class CalculatorModule {
 		this._textBoxValue = convertTotalToString;
 		return this.historyArr;
 	}
+
+	clearHistory(): void {
+		this.historyArr = [];
+	}
 }
