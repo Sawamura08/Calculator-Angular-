@@ -12,6 +12,7 @@ export class AppComponent {
 
 	EqualOnClick(): void {
 		const equal = this.Calculator.equalResult();
+		console.log(equal);
 	}
 
 	percentOnClick(): void {
